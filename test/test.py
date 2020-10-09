@@ -1,4 +1,6 @@
-print("Sup!u")
+def pr():
+    print("Sup!u")
 
 def main():
-    a = 1+1
+    pr()
+
