@@ -17,4 +17,4 @@ jobs:
       - name: Install package
         run: pip install -e locust/
       - name: Run locust check
-        run: locust -r /test -i master -t t-2
+        run: locust -r . -i master -t t-2
