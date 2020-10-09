@@ -19,5 +19,4 @@ jobs:
       - name: Install package
         run: pip install -e locust/
       - name: Run locust check
-        run: git branch
-        # run: locust -r . -i main -t t-2
+        run: locust -r . -i main -t t-2
