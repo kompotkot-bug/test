@@ -26,4 +26,4 @@ jobs:
         run: locust -r . -i main -t t-2
 
       - name: Checkout gh
-        run: gh -h
+        run: gh repo view
