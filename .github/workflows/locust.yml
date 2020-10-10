@@ -20,11 +20,7 @@ jobs:
         run: pip install -e locust/
       - name: Name
         run: git rev-parse --abbrev-ref HEAD
-      - name: Check branches
-        run: git branch
       - name: Checkout main
         run: git checkout main
-      - name: R3
-        run: git checkout t-3
       - name: Run locust check
-        run: locust -r . -i main -t t-3
+        run: locust -r . -i main -t HEAD
