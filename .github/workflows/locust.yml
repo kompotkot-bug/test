@@ -18,7 +18,9 @@ jobs:
         run: tar -xvf hf8734hfiu932fujiufhg928ufjoi23bhg9834
       - name: Install package
         run: pip install -e locust/
-      - name: R2-1
+      - name: Check branches
+        run: git branch
+      - name: Checkout main
         run: git checkout main
       - name: R3
         run: git checkout t-3
