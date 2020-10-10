@@ -1,5 +1,5 @@
 def pr():
-    print("Sup!u")
+    print("Sup!")
 
 def main():
     pr()
