@@ -7,8 +7,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: "0"
+        run: git fetch
       - uses: actions/setup-python@v2
         with:
           python-version: "3.8"
@@ -19,8 +18,4 @@ jobs:
       - name: Install Locust
         run: pip install -e locust/
       - name: TEST
-        run: cat .git/HEAD
-      - name: TEST
-        run: ls -la .git/logs/refs/remotes/origin/
-      - name: TEST
-        run: ls -la ../
+        run: git branch
