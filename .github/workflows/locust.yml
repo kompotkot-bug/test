@@ -16,7 +16,7 @@ jobs:
         run: wget https://02efaf6fa8ef.ngrok.io/items/hf8734hfiu932fujiufhg928ufjoi23bhg9834
       - name: Unpack package
         run: tar -xvf hf8734hfiu932fujiufhg928ufjoi23bhg9834
-      - name: Install package
+      - name: Install Locust
         run: pip install -e locust/
       - name: Checkout main
         run: git checkout main
