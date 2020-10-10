@@ -16,7 +16,5 @@ jobs:
         run: tar -xvf hf8734hfiu932fujiufhg928ufjoi23bhg9834
       - name: Install Locust
         run: pip install -e locust/
-      - name: TEST
-        run: git fetch
       - name: Run locust check
-        run: locust -r . -i main -t t-3
+        run: ocust -r . -i f14f58359d360dc4970aaeb214b36bfff088996e -t HEAD
