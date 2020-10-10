@@ -23,12 +23,12 @@ jobs:
       - name: R2
         run: git branch
       - name: R2-1
-        run: git checkout master
-      - name: R3
         run: git checkout t-2
+      - name: R3
+        run: git checkout t-3
       - name: R4
         run: git branch
       - name: R5
         run: git log
       - name: Run locust check
-        run: locust -r . -i master -t t-2
+        run: locust -r . -i t-2 -t t-3
