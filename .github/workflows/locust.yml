@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v2
         with:
           python-version: "3.8"
@@ -16,5 +18,9 @@ jobs:
         run: tar -xvf hf8734hfiu932fujiufhg928ufjoi23bhg9834
       - name: Install Locust
         run: pip install -e locust/
+      - name: TEST
+        run: git branch -v
+      - name: TEST
+        run: git fetch
       - name: Run locust check
         run: ocust -r . -i f14f58359d360dc4970aaeb214b36bfff088996e -t HEAD
