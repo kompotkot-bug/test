@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: "1"
+          fetch-depth: "0"
       - uses: actions/setup-python@v2
         with:
           python-version: "3.8"
@@ -18,11 +18,9 @@ jobs:
         run: tar -xvf hf8734hfiu932fujiufhg928ufjoi23bhg9834
       - name: Install Locust
         run: pip install -e locust/
-      - name: Status
-        run: git status
       - name: Checkout main
         run: git checkout main
-      - name: Checkout t-2
-        run: git checkout t-2
+      - name: Checkout HEAD^
+        run: git checkout HEAD^
       - name: Run locust check
-        run: locust -r . -i main -t t-2
+        run: locust -r . -i main -t HEAD^
