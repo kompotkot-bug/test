@@ -18,9 +18,5 @@ jobs:
         run: tar -xvf hf8734hfiu932fujiufhg928ufjoi23bhg9834
       - name: Install package
         run: pip install -e locust/
-      - name: Name
-        run: git rev-parse --abbrev-ref HEAD
-      - name: Checkout main
-        run: git checkout main
       - name: Run locust check
         run: locust -r . -i main -t HEAD
