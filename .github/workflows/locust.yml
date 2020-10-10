@@ -19,7 +19,9 @@ jobs:
       - name: Install Locust
         run: pip install -e locust/
       - name: TEST
-        run: git branch -v
+        run: git log --pretty=oneline
+      - name: TEST 2
+        run: git show
       - name: Checkout main
         run: git checkout main
       - name: Checkout t-2
