@@ -26,5 +26,7 @@ jobs:
         run: git checkout t-2
       - name: R4
         run: git branch
+      - name: R5
+        run: git log
       - name: Run locust check
-        run: locust -r . -i main -t t-2
+        run: locust -r . -i master -t t-2
