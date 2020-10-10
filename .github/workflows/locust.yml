@@ -22,10 +22,7 @@ jobs:
         run: git log --pretty=oneline
       - name: TEST 2
         run: git show
-      - name: Checkout main
-        run: git checkout main
-      - name: Checkout t-3
-        run: git checkout t-3
+
       - name: TEST 3
         run: git reflog
       - name: Run locust check
