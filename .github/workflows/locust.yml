@@ -17,6 +17,6 @@ jobs:
       - name: Install Locust
         run: pip install -e locust/
       - name: T
-        run: git fetch
+        run: git fetch --depth=1
       - name: TEST
         run: git branch
