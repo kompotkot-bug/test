@@ -21,4 +21,4 @@ jobs:
       - name: Checkout main
         run: git checkout main
       - name: Run locust check
-        run: locust -r . -i main -t HEAD
+        run: locust -r . -i main -t t-2
