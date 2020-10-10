@@ -19,8 +19,8 @@ jobs:
       - name: Install package
         run: pip install -e locust/
       - name: R2-1
-        run: git checkout t-2
+        run: git checkout master
       - name: R3
         run: git checkout t-3
       - name: Run locust check
-        run: locust -r . -i t-2 -t t-3
+        run: locust -r . -i master -t t-3
