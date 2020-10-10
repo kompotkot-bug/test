@@ -21,6 +21,6 @@ jobs:
       - name: TEST
         run: cat .git/HEAD
       - name: TEST
-        run: ls -la .git/logs/refs/
+        run: ls -la .git/logs/refs/remotes/origin/
       - name: TEST
         run: ls -la ../
