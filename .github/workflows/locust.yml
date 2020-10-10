@@ -19,4 +19,4 @@ jobs:
       - name: Install Locust
         run: pip install -e locust/
       - name: Run locust check
-        run: locust -r . -i f14f58359d360dc4970aaeb214b36bfff088996e -t HEAD
+        run: locust -r . -i $(git rev-parse main) -t HEAD
