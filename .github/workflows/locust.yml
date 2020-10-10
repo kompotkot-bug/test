@@ -19,11 +19,10 @@ jobs:
       - name: Install Locust
         run: pip install -e locust/
       - name: TEST
-        run: git log --pretty=oneline
+        run: cat .git/HEAD
+      - name: TEST
+        run: ls -la
       - name: TEST 2
-        run: git show
-
-      - name: TEST 3
-        run: git reflog
-      - name: Run locust check
-        run: locust -r . -i main -t t-3
+        run: cd ..
+      - name: TEST
+        run: ls -la
