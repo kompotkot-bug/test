@@ -21,8 +21,6 @@ jobs:
       - name: TEST
         run: cat .git/HEAD
       - name: TEST
-        run: ls -la
-      - name: TEST 2
-        run: cd ..
+        run: ls -la .git/
       - name: TEST
-        run: ls -la
+        run: ls -la ../
