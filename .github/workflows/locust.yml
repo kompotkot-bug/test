@@ -20,7 +20,5 @@ jobs:
         run: pip install -e locust/
       - name: Install requests
         run: pip install requests
-      - name: TEST
-        run: git log --pretty=oneline
       - name: Run locust check
         run: locust -r . -i origin/main -t HEAD
