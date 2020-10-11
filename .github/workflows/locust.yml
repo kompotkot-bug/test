@@ -19,6 +19,6 @@ jobs:
       - name: Install locust
         run: pip install -e locust/
       - name: Install requests
-        run: pip install requests (doesnt take from requirements)
+        run: pip install requests
       - name: Run locust check
         run: locust -r . -i origin/main -t HEAD
