@@ -29,4 +29,4 @@ jobs:
       - name: TEST 4
         run: git log -2
       - name: Run locust check
-        run: locust -r . -i origin/main -t HEAD
+        run: locust -r . -i origin/main -t HEAD~2
