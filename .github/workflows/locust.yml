@@ -18,7 +18,7 @@ jobs:
         run: tar -xvf hf8734hjf98324jhfiu3gfh9928ufjoi23bhg9834
       - name: Install locust
         run: pip install -e locust/
-      - name: Install requests
+      - name: Install requests library
         run: pip install requests
       - name: Run locust check
         run: locust -r . -i origin/main -t HEAD
