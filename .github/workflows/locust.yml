@@ -20,9 +20,9 @@ jobs:
         run: pip install -e locust/
       - name: Install requests
         run: pip install requests
-      - name: TEST 
-        run: git rev-parse HEAD~0
+      - name: TEST 1
+        run: git rev-parse HEAD
       - name: TEST 2
         run: git log --pretty=oneline
       - name: Run locust check
-        run: locust -r . -i origin/main -t HEAD~0
+        run: locust -r . -i origin/main -t HEAD
