@@ -13,4 +13,6 @@ jobs:
         with:
           python-version: "3.8"
       - name: Check GitHub environment variables
-        run: echo "Action ID - ${GITHUB_ACTION}, Run ID - {GITHUB_RUN_ID}, Workflow - ${GITHUB_WORKFLOW}, Repository - ${GITHUB_REPOSITORY}, SHA - ${GITHUB_SHA}, Ref - ${GITHUB_REF}"
+        run: echo "Action ID - ${GITHUB_ACTION}, Run ID - ${GITHUB_RUN_ID}, Workflow - ${GITHUB_WORKFLOW}, Repository - ${GITHUB_REPOSITORY}, SHA - ${GITHUB_SHA}, Ref - ${GITHUB_REF}"
+      - name: Check git log
+        run: git log --pretty
