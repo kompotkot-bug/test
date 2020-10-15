@@ -17,4 +17,4 @@ jobs:
       - name: Check git log
         run: git log --format=oneline
       - name: Parent commit
-        run: git log "${GITHUB_REF}" --format=oneline -2 | tail -n+2
+        run: git log --format=oneline -2 | tail -n+2
