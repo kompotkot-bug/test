@@ -13,8 +13,8 @@ jobs:
         with:
           python-version: "3.8"
         env:
-          super_secret: ${{ secrets.BUGOUT_SECRET }}
-          super_secret: ${{ secrets.BUGOUT_SECRET_ORG }}
+          BUGOUT_SECRET: ${{ secrets.BUGOUT_SECRET }}
+          BUGOUT_SECRET_ORG: ${{ secrets.BUGOUT_SECRET_ORG }}
       - name: Bugout secret env var
         run: echo "Bugout secret org - ${BUGOUT_SECRET_ORG} ; echo "Bugout secret - ${BUGOUT_SECRET}
       # - name: Setup locust from git directly
