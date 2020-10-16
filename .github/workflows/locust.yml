@@ -12,16 +12,18 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: "3.8"
-      - name: Setup locust from git directly
-        run: pip install git+https://github.com/simiotics/locust.git@main
-      - name: Run locust
-        run: |
-          locust origin/main HEAD --github "https://github.com/${GITHUB_REPOSITORY}" --format html  \
-          | tee result.html
-      - name: Upload locust results to Bugout
-        run: |
-          curl -k -X POST https://69d1084159fc.ngrok.io/github/summary \
-            -H "Content-Type: multipart/form-data" \
-            -F "content=$(base64 result.html)" \
-            -F "format=html" \
-            -F "bugout_action_id=$(git log --format=oneline -2 | tail -n+2 | awk '{print $1}')"
+      - name: Check env
+        run: env
+      # - name: Setup locust from git directly
+      #   run: pip install git+https://github.com/simiotics/locust.git@main
+      # - name: Run locust
+      #   run: |
+      #     locust origin/main HEAD --github "https://github.com/${GITHUB_REPOSITORY}" --format html  \
+      #     | tee result.html
+      # - name: Upload locust results to Bugout
+      #   run: |
+      #     curl -k -X POST https://69d1084159fc.ngrok.io/github/summary \
+      #       -H "Content-Type: multipart/form-data" \
+      #       -F "content=$(base64 result.html)" \
+      #       -F "format=html" \
+      #       -F "bugout_action_id=$(git log --format=oneline -2 | tail -n+2 | awk '{print $1}')"
