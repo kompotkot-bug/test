@@ -1,5 +1,5 @@
-def func2():
+def func():
     a = 2 + 1
     main(a)
-def temp2(a):
+def temp(a):
     print(a)
