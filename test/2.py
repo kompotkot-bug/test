@@ -1,4 +1,5 @@
 def foo():
-    main()
-def main():
-    print(123)
+    a = 2 + 1
+    main(a)
+def main(a):
+    print(a)
