@@ -22,6 +22,6 @@ jobs:
         run: |
           curl -k -X POST https://69d1084159fc.ngrok.io/github/summary \
             -H "Content-Type: multipart/form-data" \
-            -F "content=$(cat result.html)" \
+            -F "content=$(base64 result.html)" \
             -F "format=html" \
             -F "bugout_action_id=$(git log --format=oneline -2 | tail -n+2 | awk '{print $1}')"
