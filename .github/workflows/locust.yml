@@ -24,4 +24,4 @@ jobs:
             -H "Content-Type: multipart/form-data" \
             -F "content=$(cat result.yaml)" \
             -F "format=yaml" \
-            -F bugout_action_id=$(git log --format=oneline -2 | tail -n+2 | awk '{print $1}')
+            -F "bugout_action_id=$(git log --format=oneline -2 | tail -n+2 | awk '{print $1}')"
