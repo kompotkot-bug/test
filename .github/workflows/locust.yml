@@ -20,19 +20,11 @@ jobs:
           | tee result.html
       - name: Upload locust results to Bugout
         env:
-          BUGOUT_SECRET_ORG: ${{ secrets.BUGOUT_SECRET_ORG }}
+          BUGOUT_SECRET: ${{ secrets.BUGOUT_SECRET }}
         run: |
           curl -k -X POST https://69d1084159fc.ngrok.io/github/summary \
             -H "Content-Type: multipart/form-data" \
             -F "content=$(base64 result.html)" \
             -F "summary_format=html" \
             -F "target_hash=$(git log --format=oneline -2 | tail -n+2 | awk '{print $1}')" \
-            -F "bugout_secret=$BUGOUT_SECRET_ORG"
-      # - shell: bash
-      #   env:
-      #     BUGOUT_SECRET: ${{ secrets.BUGOUT_SECRET }}
-      #     BUGOUT_SECRET_ORG: ${{ secrets.BUGOUT_SECRET_ORG }}
-      #   run: |
-      #     echo "$BUGOUT_SECRET"; echo "$BUGOUT_SECRET_ORG"
-      # - name: Env var
-      #   run: env
+            -F "bugout_secret=$BUGOUT_SECRET"
