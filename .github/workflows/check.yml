@@ -14,8 +14,8 @@ jobs:
           python-version: "3.8"
       # - name: Setup locust from git directly
       #   run: pip install git+https://github.com/simiotics/locust.git@main
-      -name: TEST
-        run: env
+        -name: TEST
+          run: env
       # - name: Run locust
       #   run: |
       #     locust origin/main HEAD --github "https://github.com/${GITHUB_REPOSITORY}" --format html  \
