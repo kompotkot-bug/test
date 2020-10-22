@@ -12,8 +12,8 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: "3.8"
-        -name: TEST
-          run: ls -la
+      - name: TEST
+        run: env
       # - name: Setup locust from git directly
       #   run: pip install git+https://github.com/simiotics/locust.git@main
       # - name: Run locust
