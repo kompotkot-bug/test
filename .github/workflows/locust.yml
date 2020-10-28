@@ -1,27 +1,34 @@
-name: Locust Check
+name: Locust summary
 
-on: [pull_request]
+on: [ pull_request_target ]
 
 jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - name: PR head repo
+        id: head_repo_name
+        run: |
+          HEAD_REPO_NAME=$(jq -r '.pull_request.head.repo.full_name' "$GITHUB_EVENT_PATH")
+          echo "PR head repo: $HEAD_REPO_NAME"
+          echo "::set-output name=repo::$HEAD_REPO_NAME"
+      - name: Checkout git repo
+        uses: actions/checkout@v2
         with:
+          repository: ${{ steps.head_repo_name.outputs.repo }}
           fetch-depth: 0
-      - uses: actions/setup-python@v2
+      - name: Generate Locust summary
+        uses: simiotics/locust-action@v0.1.5
+        id: locust
         with:
-          python-version: "3.8"
-      - name: Setup locust from git directly
-        run: pip install git+https://github.com/simiotics/locust.git@main
-      - name: Run locust
-        run: |
-          locust origin/main HEAD --github "https://github.com/${GITHUB_REPOSITORY}" --format html  \
-          | tee result.html
-      - name: Upload locust results to Bugout
-        run: |
-          curl -k -X POST https://69d1084159fc.ngrok.io/github/summary \
-            -H "Content-Type: multipart/form-data" \
-            -F "content=$(base64 result.html)" \
-            -F "format=html" \
-            -F "bugout_action_id=$(git log --format=oneline -2 | tail -n+2 | awk '{print $1}')"
+          format: html-github
+      # - name: Comment on PR
+      #   uses: actions/github-script@v3
+      #   with:
+      #     script: |
+      #       github.issues.createComment({
+      #         issue_number: context.issue.number,
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         body: '${{ steps.locust.outputs.summary }}',
+      #       })

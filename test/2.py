@@ -1,5 +1,5 @@
-def func3():
+def func2():
     a = 2 + 1
-    main(a)
-def main3(a):
+    main2(a)
+def main2(a):
     print(a)
