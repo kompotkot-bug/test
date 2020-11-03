@@ -32,4 +32,4 @@ jobs:
             -F "summary_format=json" \
             -F "terminal_hash=$(git log --format=oneline -2 | tail -n+2 | awk '{print $1}')" \
             -F "bugout_secret=$BUGOUT_SECRET" \
-            -F "comments_url=cat /home/runner/work/_temp/_github_workflow/event.json | jq '.pull_request._links.comments.href'"
+            -F "$(comments_url=cat /home/runner/work/_temp/_github_workflow/event.json | jq '.pull_request._links.comments.href')"
