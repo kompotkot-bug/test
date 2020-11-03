@@ -33,4 +33,4 @@ jobs:
             -F "terminal_hash=$(git log --format=oneline -2 | tail -n+2 | awk '{print $1}')" \
             -F "bugout_secret=$BUGOUT_SECRET"
       - name: Check local json
-        run: cat /home/runner/work/_temp/_github_workflow/event.json
+        run: cat /home/runner/work/_temp/_github_workflow/event.json | jq '.pull_request._links.comments.href'
