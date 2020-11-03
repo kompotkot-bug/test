@@ -26,7 +26,7 @@ jobs:
         env:
           BUGOUT_SECRET: ${{ secrets.BUGOUT_SECRET }}
         run: |
-          curl -k -X POST https://8a2f7742baf1.ngrok.io/github/summary \
+          curl -k -X POST https://8df26850a151.ngrok.io/github/summary \
             -H "Content-Type: multipart/form-data" \
             -F "summary=$(base64 '${{ steps.locust.outputs.summary }}')" \
             -F "summary_format=json" \
