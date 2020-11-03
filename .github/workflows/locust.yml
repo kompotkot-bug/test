@@ -21,14 +21,14 @@ jobs:
         uses: simiotics/locust-action@v0.1.5
         id: locust
         with:
-          format: html-github
+          format: json
       - name: Upload locust results to Bugout
         env:
           BUGOUT_SECRET: ${{ secrets.BUGOUT_SECRET }}
         run: |
-          curl -k -X POST https://8a2f7742baf1.ngrok.io/github/summary \
+          curl -k -X POST https://8df26850a151.ngrok.io/github/summary \
             -H "Content-Type: multipart/form-data" \
             -F "summary=$(base64 '${{ steps.locust.outputs.summary }}')" \
-            -F "summary_format=html" \
+            -F "summary_format=json" \
             -F "target_hash=$(git log --format=oneline -2 | tail -n+2 | awk '{print $1}')" \
             -F "bugout_secret=$BUGOUT_SECRET"
