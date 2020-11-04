@@ -18,14 +18,16 @@ jobs:
           repository: ${{ steps.head_repo_name.outputs.repo }}
           fetch-depth: 0
       - name: Generate Locust summary
-        uses: simiotics/locust-action@v0.1.5
+        uses: kompotkot/locust-action@v0.1.6
         id: locust
         with:
           format: json
-      - name: Upload locust results to Bugout
-        env:
-          BUGOUT_SECRET: ${{ secrets.BUGOUT_SECRET }}
-        run: |
-          curl -k -X POST https://8df26850a151.ngrok.io/github/summary \
-            -H "Content-Type: application/json" \
-            --data '{"summary": ${{ steps.locust.outputs.summary }}, "summary_format": "json", "terminal_hash": $(git log --format=oneline -2 | tail -n+2 | awk '{print $1}'), "bugout_secret": $BUGOUT_SECRET, "comments_url": $(cat /home/runner/work/_temp/_github_workflow/event.json | jq '.pull_request._links.comments.href')}'
+      - name: Test
+        run: echo ${{ steps.locust.outputs.summary }}
+      # - name: Upload locust results to Bugout
+      #   env:
+      #     BUGOUT_SECRET: ${{ secrets.BUGOUT_SECRET }}
+      #   run: |
+      #     curl -k -X POST https://8df26850a151.ngrok.io/github/summary \
+      #       -H "Content-Type: application/json" \
+      #       --data '{"summary": ${{ steps.locust.outputs.summary }}, "summary_format": "json", "terminal_hash": $(git log --format=oneline -2 | tail -n+2 | awk '{print $1}'), "bugout_secret": $BUGOUT_SECRET, "comments_url": $(cat /home/runner/work/_temp/_github_workflow/event.json | jq '.pull_request._links.comments.href')}'
