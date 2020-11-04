@@ -1,5 +1,5 @@
-def func22():
+def func222():
     a = 2 + 1
-    main22(a)
-def main22(a):
+    main222(a)
+def main222(a):
     print(a)
