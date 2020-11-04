@@ -18,7 +18,7 @@ jobs:
           repository: ${{ steps.head_repo_name.outputs.repo }}
           fetch-depth: 0
       - name: Generate Locust summary
-        uses: kompotkot/locust-action@v0.1.6
+        uses: kompotkot/locust-action@v0.1.5
         id: locust
         with:
           format: json
