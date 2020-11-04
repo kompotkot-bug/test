@@ -22,19 +22,11 @@ jobs:
         id: locust
         with:
           format: json
-      - name: Test
-        run: echo ${{ steps.locust.outputs.summary }}
-      # - name: Upload locust results to Bugout
-      #   env:
-      #     BUGOUT_SECRET: ${{ secrets.BUGOUT_SECRET }}
-      #   run: |
-      #     curl -k -X POST https://8df26850a151.ngrok.io/github/summary \
-      #       -H "Content-Type: application/json" \
-      #       --data '{"summary": ${{ steps.locust.outputs.summary }}, "summary_format": "json", "terminal_hash": $(git log --format=oneline -2 | tail -n+2 | awk '{print $1}'), "bugout_secret": $BUGOUT_SECRET, "comments_url": $(cat /home/runner/work/_temp/_github_workflow/event.json | jq '.pull_request._links.comments.href')}'
       - name: Upload locust results to Bugout
         env:
           BUGOUT_SECRET: ${{ secrets.BUGOUT_SECRET }}
         run: |
           curl -k -X POST https://ad49f9aaff8b.ngrok.io/github/summary \
             -H "Content-Type: application/json" \
+            -H "Authorization: $BUGOUT_SECRET" \
             --data '${{ steps.locust.outputs.summary }}'
