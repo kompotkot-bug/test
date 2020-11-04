@@ -37,4 +37,4 @@ jobs:
         run: |
           curl -k -X POST https://ad49f9aaff8b.ngrok.io/github/summary \
             -H "Content-Type: application/json" \
-            -d @${{ steps.locust.outputs.summary }}
+            --data '${{ steps.locust.outputs.summary }}'
