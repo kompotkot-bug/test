@@ -26,7 +26,7 @@ jobs:
         env:
           BUGOUT_SECRET: ${{ secrets.BUGOUT_SECRET }}
         run: |
-          curl -k -X POST https://a61b1792d633.ngrok.io/github/summary \
+          curl -k -X POST https://c0a0ea9f806d.ngrok.io/github/summary \
             -H "Content-Type: application/json" \
             -H "x-bugout-secret: $BUGOUT_SECRET" \
             --data '${{ steps.locust.outputs.summary }}'
