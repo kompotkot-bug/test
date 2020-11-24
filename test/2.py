@@ -5,10 +5,10 @@ Return me report @bugout-dev locust
 """
 
 
-def func222():
+def func22():
     a = 2 + 1
 
 
 def main(a):
-    a = func222(a)
+    a = func22(a)
     print(a)
