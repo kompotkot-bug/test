@@ -6,7 +6,7 @@ Return me report @bugout-dev locust
 
 
 def func222():
-    a = 2 + 121
+    a = 2 + 21
 
 
 def main(a):
