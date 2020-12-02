@@ -29,5 +29,5 @@ jobs:
         run: |
           curl -k -X POST "$BUGOUT_API_URL/github/summary" \
             -H "Content-Type: application/json" \
-            -H "x-bugout-secret: $BUGOUT_SECRET" \
+            -H "Authorization: Bearer $BUGOUT_SECRET" \
             --data '${{ steps.locust.outputs.summary }}'
