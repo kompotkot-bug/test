@@ -37,8 +37,7 @@ jobs:
           BUGOUT_SECRET: ${{ secrets.BUGOUT_SECRET }}
           BUGOUT_API_URL: ${{ secrets.BUGOUT_API_URL }}
         run: |
-          summary=$(cat summary)
           curl -k -X POST "$BUGOUT_API_URL/github/summary" \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer $BUGOUT_SECRET" \
-            --data '${{ summary }}'
+            --data $(cat summary)
