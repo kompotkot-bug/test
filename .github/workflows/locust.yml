@@ -37,8 +37,9 @@ jobs:
       - name: Upload locust results to Bugout
         env:
           BUGOUT_SECRET: ${{ secrets.BUGOUT_SECRET }}
+          BUGOUT_API_URL: ${{ secrets.BUGOUT_API_URL }}
         run: |
-          curl -k -X POST "https://spire.bugout.dev/github/summary" \
+          curl -k -X POST "$BUGOUT_API_URL/github/summary" \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer $BUGOUT_SECRET" \
             --data '$(cat summary)'
