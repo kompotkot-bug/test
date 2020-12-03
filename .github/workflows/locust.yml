@@ -35,3 +35,5 @@ jobs:
           echo $TERMINAL_REF
           echo $FORMAT
           echo $REPO
+          echo $GITHUB_SHA
+          echo $GITHUB_REF
