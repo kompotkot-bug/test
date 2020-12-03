@@ -17,17 +17,21 @@ jobs:
         with:
           repository: ${{ steps.head_repo_name.outputs.repo }}
           fetch-depth: 0
-      - name: Generate Locust summary
-        uses: kompotkot/locust-action@v0.1.6
-        id: locust
+      - name: Install python
+        uses: actions/setup-python@v2
         with:
-          format: json
-      - name: Upload locust results to Bugout
-        env:
-          BUGOUT_SECRET: ${{ secrets.BUGOUT_SECRET }}
-          BUGOUT_API_URL: ${{ secrets.BUGOUT_API_URL }}
+          python-version: '3.8.5'
         run: |
-          curl -k -X POST "$BUGOUT_API_URL/github/summary" \
-            -H "Content-Type: application/json" \
-            -H "Authorization: Bearer $BUGOUT_SECRET" \
-            --data '${{ steps.locust.outputs.summary }}'
+          python -m pip install --upgrade pip setuptools
+          pip install bugout-locust
+          BUGOUT_LOCUST_REPORT=$(locust main HEAD --format json)
+      - name: Upload locust results to Bugout
+      #   env:
+      #     BUGOUT_SECRET: ${{ secrets.BUGOUT_SECRET }}
+      #     BUGOUT_API_URL: ${{ secrets.BUGOUT_API_URL }}
+        run: |
+          echo $BUGOUT_LOCUST_REPORT
+      #     curl -k -X POST "$BUGOUT_API_URL/github/summary" \
+      #       -H "Content-Type: application/json" \
+      #       -H "Authorization: Bearer $BUGOUT_SECRET" \
+      #       --data '${{ steps.locust.outputs.summary }}'
