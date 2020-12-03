@@ -29,11 +29,8 @@ jobs:
         run: |
           COMMENTS_URL=$(python -c 'import json; import os; event = os.environ.get("GITHUB_EVENT_PATH"); raw = open(event); inp_json = json.load(raw); print(inp_json.get("pull_request").get("_links").get("comments").get("href")); raw.close();')
           TERMINAL_REF=$(python -c 'import json; import os; event = os.environ.get("GITHUB_EVENT_PATH"); raw = open(event); inp_json = json.load(raw); print(inp_json.get("after")); raw.close();')
-          locust --format json "$GITHUB_SHA" "$TERMINAL_REF" --metadata "{\"comments_url\": \"${COMMENTS_URL}\", \"terminal_hash\": \"$TERMINAL_REF\"}" | tee summary
+          locust --format json $GITHUB_SHA $TERMINAL_REF --metadata "{\"comments_url\": \"${COMMENTS_URL}\", \"terminal_hash\": \"$TERMINAL_REF\"}" | tee summary
           summary=$(cat summary)
-          summary="${summary//'%'/'%25'}"
-          summary="${summary//$'\n'/'%0A'}"
-          summary="${summary//$'\r'/'%0D'}"
       - name: Upload locust results to Bugout
         env:
           BUGOUT_SECRET: ${{ secrets.BUGOUT_SECRET }}
@@ -42,4 +39,4 @@ jobs:
           curl -k -X POST "$BUGOUT_API_URL/github/summary" \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer $BUGOUT_SECRET" \
-            --data '$(cat summary)'
+            --data '${{ summary }}'
