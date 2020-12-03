@@ -25,6 +25,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip setuptools
           pip install bugout-locust
-      # - name: Generate Locust summary
-      #     BUGOUT_LOCUST_REPORT=$(locust main HEAD --format json)
-      #     echo $BUGOUT_LOCUST_REPORT
+      - name: Generate Locust summary
+        run: |
+          BUGOUT_LOCUST_REPORT=$(locust main HEAD --format json)
+          echo $BUGOUT_LOCUST_REPORT
