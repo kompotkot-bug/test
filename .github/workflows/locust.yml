@@ -29,3 +29,4 @@ jobs:
         run: |
           locust --format json "$GITHUB_SHA" HEAD | tee summary
           echo summary
+          env
