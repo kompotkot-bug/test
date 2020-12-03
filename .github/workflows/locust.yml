@@ -27,6 +27,9 @@ jobs:
           pip install bugout-locust
       - name: Generate Locust summary
         run: |
-          locust --format json "$GITHUB_SHA" HEAD | tee summary
-          echo summary
-          env
+          locust --format json "$GITHUB_SHA" "$GITHUB_HEAD_REF" | tee summary
+          summary=$(cat summary)
+          summary="${summary//'%'/'%25'}"
+          summary="${summary//$'\n'/'%0A'}"
+          summary="${summary//$'\r'/'%0D'}"
+          cat summary
