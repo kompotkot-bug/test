@@ -25,13 +25,4 @@ jobs:
           python -m pip install --upgrade pip setuptools
           pip install bugout-locust
           BUGOUT_LOCUST_REPORT=$(locust main HEAD --format json)
-      - name: Upload locust results to Bugout
-      #   env:
-      #     BUGOUT_SECRET: ${{ secrets.BUGOUT_SECRET }}
-      #     BUGOUT_API_URL: ${{ secrets.BUGOUT_API_URL }}
-        run: |
           echo $BUGOUT_LOCUST_REPORT
-      #     curl -k -X POST "$BUGOUT_API_URL/github/summary" \
-      #       -H "Content-Type: application/json" \
-      #       -H "Authorization: Bearer $BUGOUT_SECRET" \
-      #       --data '${{ steps.locust.outputs.summary }}'
