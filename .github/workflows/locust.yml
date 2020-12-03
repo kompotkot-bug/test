@@ -25,16 +25,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip setuptools
           pip install bugout-locust
-      - name: Setup variables
+      - name: Generate Locust summary
         run: |
           COMMENTS_URL=$(python -c 'import json; import os; event = os.environ.get("GITHUB_EVENT_PATH"); raw = open(event); inp_json = json.load(raw); print(inp_json.get("pull_request").get("_links").get("comments").get("href")); raw.close();')
           TERMINAL_REF=$(python -c 'import json; import os; event = os.environ.get("GITHUB_EVENT_PATH"); raw = open(event); inp_json = json.load(raw); print(inp_json.get("after")); raw.close();')
-      - name: Generate Locust summary
-        run: |
+          echo $"TERMINAL_REF"
+          echo $"COMMENTS_URL"
+          echo $"GITHUB_SHA"
           locust --format json "$GITHUB_SHA" "$TERMINAL_REF" --github "${REPO_URL}" --metadata "{\"comments_url\": \"${COMMENTS_URL}\", \"terminal_hash\": \"$TERMINAL_REF\"}" | tee summary
-          summary=$(cat summary)
-          summary="${summary//'%'/'%25'}"
-          summary="${summary//$'\n'/'%0A'}"
-          summary="${summary//$'\r'/'%0D'}"
           cat summary
-          cat $GITHUB_EVENT_PATH
