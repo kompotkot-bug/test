@@ -1,0 +1,1 @@
+{"locust": [{"file": "test/2.py", "changes": [{"name": "func222", "type": "function", "line": 8, "changed_lines": 1, "total_lines": 2, "children": []}]}], "refs": {"initial": "1e5df1d", "terminal": "f346e8a"}, "comments_url": "https://api.github.com/repos/Bug-KompotKot/test/issues/97/comments", "terminal_hash": "f346e8a654c3536d9a1d06b75738fdeb96acecef"}
