@@ -32,12 +32,12 @@ jobs:
           echo $COMMENTS_URL
           echo $TERMINAL_REF
           locust --format json $GITHUB_SHA $TERMINAL_REF --metadata "{\"comments_url\": \"${COMMENTS_URL}\", \"terminal_hash\": \"$TERMINAL_REF\"}" | tee summary
-      - name: Upload locust results to Bugout
+          summary=$(cat summary)
+          summary="${summary//'%'/'%25'}"
+          summary="${summary//$'\n'/'%0A'}"
+          summary="${summary//$'\r'/'%0D'}"
+      - name: Test
         env:
-          BUGOUT_SECRET: ${{ secrets.BUGOUT_SECRET }}
-          BUGOUT_API_URL: ${{ secrets.BUGOUT_API_URL }}
+          SUMMARY: ${{ summary }}
         run: |
-          curl -k -X POST "$BUGOUT_API_URL/github/summary" \
-            -H "Content-Type: application/json" \
-            -H "Authorization: Bearer $BUGOUT_SECRET" \
-            --data $(cat summary)
+          echo $SUMMARY
