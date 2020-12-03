@@ -27,13 +27,6 @@ jobs:
           pip install bugout-locust
       - name: Generate Locust summary
         run: |
-          INITIAL_REF="$INPUT_INITIAL_REF"
-          TERMINAL_REF="$INPUT_TERMINAL_REF"
-          FORMAT="${INPUT_FORMAT:-json}"
-          REPO="/github/workspace/$REPO_SUBDIR"
-          echo $INITIAL_REF
-          echo $TERMINAL_REF
-          echo $FORMAT
-          echo $REPO
-          echo $GITHUB_SHA
-          echo $GITHUB_REF
+          locust --format json "$GITHUB_SHA" HEAD | tee summary
+          echo summary
+          env
