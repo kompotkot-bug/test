@@ -37,7 +37,5 @@ jobs:
           summary="${summary//$'\n'/'%0A'}"
           summary="${summary//$'\r'/'%0D'}"
       - name: Test
-        env:
-          SUMMARY: ${{ summary }}
         run: |
-          echo $SUMMARY
+          echo $summary
