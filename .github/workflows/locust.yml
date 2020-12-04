@@ -39,12 +39,17 @@ jobs:
           summary="${summary//$'\n'/'%0A'}"
           summary="${summary//$'\r'/'%0D'}"
           echo "::set-output name=summary::$summary"
-      - name: Upload locust results to Bugout
-        env:
-          BUGOUT_SECRET: ${{ secrets.BUGOUT_SECRET }}
-          BUGOUT_API_URL: ${{ secrets.BUGOUT_API_URL }}
+      - name: Test
         run: |
-          curl -k -X POST "$BUGOUT_API_URL/github/summary" \
-            -H "Content-Type: application/json" \
-            -H "Authorization: Bearer $BUGOUT_SECRET" \
-            --data '${{ steps.clean_summary.outputs.summary }}'
+          locust.github initial
+          locust.github terminal
+          locust.github repo
+#       - name: Upload locust results to Bugout
+#         env:
+#           BUGOUT_SECRET: ${{ secrets.BUGOUT_SECRET }}
+#           BUGOUT_API_URL: ${{ secrets.BUGOUT_API_URL }}
+#         run: |
+#           curl -k -X POST "$BUGOUT_API_URL/github/summary" \
+#             -H "Content-Type: application/json" \
+#             -H "Authorization: Bearer $BUGOUT_SECRET" \
+#             --data '${{ steps.clean_summary.outputs.summary }}'
