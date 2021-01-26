@@ -5,11 +5,11 @@ Return me report @bugout-dev locust
 """
 class Another:
     """
-    Test class
+    Test 1 class
     """
 
 def func222():
-    a = 221 + 3
+    a = 22 + 3
 
 
 def main(a):
