@@ -34,7 +34,7 @@ jobs:
           INITIAL_REF=$(locust.github initial)
           TERMINAL_REF=$(locust.github terminal)
           REPO_URL=$(locust.github repo)
-          locust --format json $INITIAL_REF $TERMINAL_REF --github $REPO_URL --metadata "{\"comments_url\": \"${COMMENTS_URL}\", \"terminal_hash\": \"$TERMINAL_REF\"}" | tee summary
+          locust --format json $INITIAL_REF $TERMINAL_REF --github $REPO_URL --metadata "{\"comments_url\": \"${COMMENTS_URL}\", \"terminal_hash\": \"$TERMINAL_REF\", \"branch\": \"$GITHUB_HEAD_REF\"}" | tee summary
       - name: Cleaning summary
         id: clean_summary
         run: |
