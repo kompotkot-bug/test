@@ -5,12 +5,12 @@ Return me report @bugout-dev locust
 """
 class A:
     """
-    Some description of class.
+    Some description of class A.
     """
 
 
 def func222():
-    a = 2 + 31
+    a = 2 + 311
 
 
 def main(a):
