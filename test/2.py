@@ -9,7 +9,7 @@ class A:
     """
 
 def func222():
-    a = 132 + 31
+    a = 13 + 31
 
 
 def main(a):
