@@ -3,10 +3,14 @@ Some text
 @bugout-dev locust report
 Return me report @bugout-dev locust
 """
+class A:
+    """
+    Class description
+    """
 
 
 def func222():
-    a = 2 + 31
+    a = 12 + 313
 
 
 def main(a):
