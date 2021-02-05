@@ -28,6 +28,9 @@ jobs:
       - name: Cat GITHUB_EVENT_PATH
         run: |
           cat $GITHUB_EVENT_PATH
+      - name: Env
+        run: |
+          env
       - name: Generate Locust summary
         run: |
           COMMENTS_URL=$(python -c 'import json; import os; event = os.environ.get("GITHUB_EVENT_PATH"); raw = open(event); inp_json = json.load(raw); print(inp_json.get("pull_request").get("_links").get("comments").get("href")); raw.close();')
