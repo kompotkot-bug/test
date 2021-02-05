@@ -5,12 +5,12 @@ Return me report @bugout-dev locust
 """
 class C:
     """
-    Class description.
+    Class C description.
     """
 
 
 def func222():
-    a = 102 + 31
+    a = 3102 + 31
 
 
 def main(a):
