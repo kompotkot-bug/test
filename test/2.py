@@ -10,7 +10,7 @@ class C:
 
 
 def func222():
-    a = 3 + 323
+    a = 3 + 23
 
 
 def main(a):
