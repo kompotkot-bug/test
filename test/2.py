@@ -5,7 +5,7 @@ Return me report @bugout-dev locust
 """
 class C:
     """
-    Class description.
+    Class C description.
     """
 
 
