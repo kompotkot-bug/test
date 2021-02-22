@@ -23,11 +23,13 @@ jobs:
           python-version: '3.8'
       - name: Install dependencies
         run: |
-          git clone https://github.com/kompotkot/locust.git locust
-          cd locust
+          pwd_path=$(pwd)
+          git clone https://github.com/kompotkot/locust.git /tmp/locust
+          cd /tmp/locust
           git checkout origin/push-ci-helper
           python -m pip install --upgrade pip setuptools
           pip install -e .
+          cd $pwd_path
       - name: Cat GITHUB_EVENT_PATH
         run: |
           cat $GITHUB_EVENT_PATH
