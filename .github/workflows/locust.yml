@@ -26,7 +26,7 @@ jobs:
           pwd_path=$(pwd)
           git clone https://github.com/kompotkot/locust.git /tmp/locust
           cd /tmp/locust
-          git checkout origin/push-ci-helper
+          git checkout origin/fix-plugins-publish
           python -m pip install --upgrade pip setuptools
           pip install -e .
           cd $pwd_path
