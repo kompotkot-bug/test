@@ -38,4 +38,4 @@ jobs:
           BUGOUT_SECRET: ${{ secrets.BUGOUT_SECRET }}
           BUGOUT_API_URL: ${{ secrets.BUGOUT_API_URL }}
         run: |
-          locust.github send
+          locust.github publish
