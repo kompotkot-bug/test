@@ -23,17 +23,9 @@ jobs:
           python-version: '3.8'
       - name: Install dependencies
         run: |
-          pwd_path=$(pwd)
-          git clone https://github.com/kompotkot/locust.git /tmp/locust
-          cd /tmp/locust
-          git checkout origin/fix-plugins-publish
           python -m pip install --upgrade pip setuptools
-          pip install -e .
-          cd $pwd_path
-      - name: Cat GITHUB_EVENT_PATH
-        run: |
-          cat $GITHUB_EVENT_PATH
-      - name: Run locust
+          pip install bugout-locust
+      - name: Generate and send Locust summary
         env:
           BUGOUT_SECRET: ${{ secrets.BUGOUT_SECRET }}
           BUGOUT_API_URL: ${{ secrets.BUGOUT_API_URL }}
